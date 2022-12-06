@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Way!</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+    <script src="../p5/p5.js"></script>
+    <script src="../p5/p5.sound.js"></script>
+    <script src="../p5/p5.dom.js"></script>
+
+    <script src="../js/guiElements/DrawPanel.js"></script>
+    <script src="../js/guiElements/Button.js"></script>
+    <script src="../js/guiElements/Label.js"></script>
+    <script src="../js/guiElements/InputButton.js"></script>
+    <script src="../js/guiElements/Notification.js"></script>
+    <script src="../js/gameElements/BenefitPopUp.js"></script>
+    <script src="../js/gameElements/Field.js"></script>
+    <script src="../js/gameElements/Player.js"></script>
+    <script src="../js/gameElements/Tile.js"></script>
+    <script src="../js/gameElements/CommandList.js"></script>
+    <script src="../js/guiElements/CommandTabelle.js"></script>
+    <script src="../js/gameElements/Scroller.js"></script>
+
+    <script src="../js/factory/GameFactory.js"></script>
+    <script src="../js/factory/GuiFactory.js"></script>
+
+    <script src="../js/gui/levelSelection/LevelSelection.js"></script>
+    <script src="../js/gui/levelSelection/LevelLoader.js"></script>
+    <script src="../js/gui/game/Game.js"></script>
+
+    <script src="../js/commands/CommandButtonBehavior.js"></script>
+
+    <script src="../js/mouseListener/MouseListener.js"></script>
+
+    <script src="../test/UITest.js"></script>
+    <!-- sktech.js MUSS ganz unten stehen, damit vorher alles geladen wird! -->
+    <script src="../js/sketch.js"></script>
+
+
+
+
+</head>
+<body>
+<!--[if IE]>
+<h1 align="center">Internet Explorer wird nicht unterstützt,<br>
+    bitte benutzen Sie Chrome, Firefox oder Safari.</h1>
+<![endif]-->
+
+<div id="ie" style="display: none" class="menu-btn">
+    <i class ="fas fa-bars"></i>
+    <h1 align="center">Internet Explorer wird nicht unterstützt,<br>
+        bitte benutzen Sie Chrome, Firefox oder Safari.</h1>
+</div>
+<script>if(/Trident\/|MSIE/.test(window.navigator.userAgent)){var div = document.getElementById("ie"); div.removeAttribute("style");}</script>
+
+</body>
+
+</html>
