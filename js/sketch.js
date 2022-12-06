@@ -12,8 +12,25 @@ var canvas;
 
 var tileSize;
 
+let ziel;
+
+let player_up, player_right, player_down, player_left;
+
+let ueberschrift_gif;
+
+let spielfeld = [];
+
+let leveltxt;
+
+
 function preload(){
     //TODO
+    ziel = loadImage("../res/bilder/fi_logo.png");
+    player_up = loadImage("../res/bilder/player_up.png");
+    player_right = loadImage("../res/bilder/player_right.png");
+    player_down = loadImage("../res/bilder/player_down.png");
+    player_left = loadImage("../res/bilder/player_left.png");
+    ueberschrift_gif = createImg("../res/ressourcen/FindYourWay.gif");
 }
 
 function setup() {

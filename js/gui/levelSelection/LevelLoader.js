@@ -36,8 +36,7 @@ class LevelLoader{
             for(var u = 0; u < level.indexOf('-'); u++){
                 var id = parseInt(level.charAt(u));
                 if(id === 2){
-                    //TODO filogo als sprite einfügen
-                    field[i].push(GameFactory.createTile({x: u+x, y: i+y, wideX: u+wideX, wideY: i+wideY, id: id}));
+                    field[i].push(GameFactory.createTile({x: u+x, y: i+y, wideX: u+wideX, wideY: i+wideY, sprite: ziel, id: id}));
                 }else {
                     field[i].push(GameFactory.createTile({x: u+x, y: i+y, wideX: u+wideX, wideY: i+wideY, id: id}));
                 }

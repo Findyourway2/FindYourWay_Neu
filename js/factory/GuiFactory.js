@@ -3,6 +3,7 @@
  */
 "use strict";
 
+
 class GuiFactory{
 
     static createButton(parameter){
@@ -28,8 +29,9 @@ class GuiFactory{
 
         b.width = b.scaleWidth * tileSize;
         b.height = b.scaleHeight * tileSize;
-        b.btnColor = (parameter.btnColor !== null || parameter.btnColor !== undefined) ? parameter.btnColor : color(170);
+        b.btnColor = (parameter.btnColor !== null || parameter.btnColor !== undefined) ? parameter.btnColor : color(70);
         b.image = parameter.image;
+        b.textsize = parameter.textsize;
 
         b.mouseAction = parameter.mouseAction;
         
@@ -51,14 +53,6 @@ class GuiFactory{
         return b;
     }
 
-    static createDrawPanel(parameter){
-        var p = new DrawPanel();
-        p.content = (parameter.content === null || parameter.content === undefined) ? [] : parameter.content;
-        p.background = (parameter.background === null || parameter.background === undefined) ? 255 : parameter.background;
-        p.dragButton = null;
-        return p;
-    }
-
     static createInputButton(parameter){
         var b = new InputButton();
 
@@ -70,21 +64,41 @@ class GuiFactory{
         b.wideX = parameter.wideX;
         b.wideY = parameter.wideY;
 
+        b.stroke = parameter.stroke;
+        b.winkel = parameter.winkel;
+
+        b.textAlignX = parameter.textAlignX;
+        b.textAlignY = parameter.textAlignY;
+        b.textSize = parameter.textSize;
+        b.textCol = parameter.textCol;
         b.text = parameter.text;
+        b.textPosX = parameter.textPosX;
+        b.textPosY = parameter.textPosY;
+        b.textWidth = parameter.textWidth;
+        b.textHeight = parameter.textHeight;
+
 
         if(isWideScreen && b.wideX && b.wideY){
-            b.x = b.wideX * tileSize;
-            b.y = b.wideY * tileSize;
+            b.x = b.wideX;
+            b.y = b.wideY;
         }else {
-            b.x = b.scaleX * tileSize;
-            b.y = b.scaleY * tileSize;
+            b.x = b.scaleX;
+            b.y = b.scaleY;
         }
-        
-        b.width = b.scaleWidth * tileSize;
-        b.height = b.scaleHeight * tileSize;
-        b.btnColor = (parameter.btnColor != null || parameter.btnColor != undefined) ? parameter.btnColor : color(170);
-        b.image = parameter.image;
+
+        b.width = b.scaleWidth;
+        b.height = b.scaleHeight;
+        b.btnColor = parameter.btnColor;
+
         return b;
+    }
+
+    static createDrawPanel(parameter){
+        var p = new DrawPanel();
+        p.content = (parameter.content === null || parameter.content === undefined) ? [] : parameter.content;
+        p.background = (parameter.background === null || parameter.background === undefined) ? 255 : parameter.background;
+        p.dragButton = null;
+        return p;
     }
 
     static createLabel(parameter){
@@ -107,27 +121,35 @@ class GuiFactory{
         l.x = l.scaleX * tileSize;
         l.y = l.scaleY * tileSize;}
         
-        l.width = l.scaleWidth * tileSize;
-        l.height = l.scaleHeight * tileSize;
-
-        l.textSize = (parameter.textSize !== null || parameter.textSize !== undefined) ? parameter.textSize : 12;
-        l.labelColor = (parameter.labelColor !== null || parameter.labelColor !== undefined) ? parameter.labelColor : color(0);
-
-        l.horAlign = (parameter.horAlign === null || parameter.horAlign === undefined) ? CENTER : parameter.horAlign;
-        l.vertAlign = (parameter.vertAlign === null || parameter.vertAlign === undefined) ? CENTER : parameter.vertAlign;
-
-        l.stroke = (parameter.stroke === null || parameter.stroke === undefined) ? -1 : parameter.stroke;
-        
-        l.strokeWeight = (parameter.strokeWeight === null || parameter.strokeWeight === undefined) ? 1 : parameter.strokeWeight;
-
-        //TODO: Default: SparkassenFont
-        l.font = null;
-        
-        l.textStyle = (parameter.textStyle === null || parameter.textStyle === undefined) ? NORMAL : parameter.textStyle;
-        
-        l.fullWidth = (parameter.fullWidth === null || parameter.fullWidth === undefined) ? false : parameter.fullWidth;
+        l.gif = parameter.gif;
 
         return l;
+    }
+
+    static createCommandTabelle(parameter){
+        var t = new CommandTabelle();
+
+        t.scaleX = parameter.x;
+        t.scaleY = parameter.y;
+
+        t.scaleWidth = 9;
+        t.scaleHeight = 10;
+
+        t.wideX = parameter.wideX;
+        t.wideY = parameter.wideY;
+
+        if(isWideScreen && t.wideX && t.wideY){
+            t.x = t.scaleX * tileSize;
+            t.y = t.scaleY * tileSize;
+        }else{
+            t.x = t.wideX * tileSize;
+            t.y = t.wideY * tileSize;
+        }
+
+        t.width = t.scaleWidth*tileSize;
+        t.height = t.scaleHeight*tileSize;
+
+        return t;
     }
 
     static createNotification(parameter){

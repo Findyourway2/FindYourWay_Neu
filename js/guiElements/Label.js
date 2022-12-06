@@ -28,7 +28,12 @@ class Label{
         this.height = this.scaleHeight * tileSize;
         //TODO: textSize responsive
 
-        if(this.stroke === -1){
+            this.gif.size(500, 100);
+            this.gif.position(window.innerWidth/3, 0);
+            noFill();
+            // rect(this.x, this.y, tileSize, tileSize); -> überflüssig
+
+        /*if(this.stroke === -1){
             noStroke();
         }else{
             stroke(this.stroke);
@@ -47,7 +52,7 @@ class Label{
         text(this.text,this.x,this.y,this.width,this.height);
         //Back to default
         textStyle(NORMAL);
-        strokeWeight(1);
+        strokeWeight(1);*/
     }
 
     setAlignment(hor,vert){

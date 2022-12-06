@@ -3,30 +3,39 @@
  */
 "use strict";
 
-class DrawPanel{
+class DrawPanel {
 
-    constructor(){
+    constructor() {
         //Bleibt leer!
     }
-    
-    add(object){
+
+    add(object) {
         this.content.push(object);
     }
 
-    draw(){
+    draw() {
+        let commandList = this.getContent("CommandList");
         background(this.background);
-        
-        for(var i = 0; i < this.content.length; i++){
+
+        for (var i = 0; i < this.content.length; i++) {
             this.content[i].draw();
         }
-        
-        if(this.dragButton){
+
+        if (this.dragButton) {
             this.dragButton.dragButton();
         }
     }
-    
-    setBackground(color){
+
+    setBackground(color) {
         this.background = color;
     }
-    
+
+    getContent(name) {
+        for (let i = 0; i < this.content.length; i++) {
+            if (this.content[i].__proto__.constructor.name === name) {
+                return this.content[i];
+            }
+        }
+    }
+
 }

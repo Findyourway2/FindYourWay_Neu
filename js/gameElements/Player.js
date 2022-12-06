@@ -5,10 +5,42 @@
 
 class Player{
 
-    //TODO draw und wideX und wideY beachten!!
     
     constructor(){
         //Bleibt leer!
+    }
+
+    draw(){
+
+        //Adjust position and size
+        if(isWideScreen && this.wideX && this.wideY){
+            this.x = this.wideX * tileSize;
+            this.y = this.wideY * tileSize;
+        }else{
+            this.x = this.scaleX * tileSize;
+            this.y = this.scaleY * tileSize;
+        }
+
+
+        switch(this.dir) {
+            case 0:
+                this.sprite = player_up;
+                break;
+            case 90:
+                this.sprite = player_right;
+                break;
+            case 180:
+                this.sprite = player_down;
+                break;
+            case 270:
+                this.sprite = player_left;
+                break;
+            default:
+                break;
+        }
+
+            image(this.sprite, this.x, this.y, tileSize, tileSize);
+            noFill();
     }
 
     changeDestination(steps){

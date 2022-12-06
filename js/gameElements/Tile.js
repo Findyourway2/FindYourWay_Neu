@@ -40,11 +40,14 @@ class Tile{
 
         switch(this.id){
             case 0:
-            case 1:
                 this.color = color('#dbdbdb');
                 break;
-            case 2:
+            case 1:
                 this.color = 80;
+                this.sprite = player_up;
+                break;
+            case 2:
+                this.color = color('#dbdbdb');
                 break;
             case 3:
                 this.color = color('#373f51');
@@ -81,7 +84,7 @@ class Tile{
         if(this.sprite){
             image(this.sprite, this.x, this.y, tileSize, tileSize);
             noFill();
-            rect(this.x, this.y, tileSize, tileSize);
+           // rect(this.x, this.y, tileSize, tileSize); -> überflüssig
         }
 
         colorMode(RGB);

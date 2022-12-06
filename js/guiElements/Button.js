@@ -10,29 +10,29 @@ class Button {
     }
 
     draw(mousePosX, mousePosY) {
-        
+
         //Adjust position and size
-        if(isWideScreen && this.wideX && this.wideY){
+        if (isWideScreen && this.wideX && this.wideY) {
             this.x = this.wideX * tileSize;
             this.y = this.wideY * tileSize;
-        }else{
+        } else {
             this.x = this.scaleX * tileSize;
             this.y = this.scaleY * tileSize;
         }
 
         this.width = this.scaleWidth * tileSize;
         this.height = this.scaleHeight * tileSize;
-        
+
         var xPos = this.x;
         var yPos = this.y;
 
-        if(mousePosX && mousePosY){
+        if (mousePosX && mousePosY) {
             //Mouse is dragged, draw button at mouse position
-            xPos = mousePosX - (this.width /2);
-            yPos = mousePosY - (this.height /2);
+            xPos = mousePosX - (this.width / 2);
+            yPos = mousePosY - (this.height / 2);
         }
 
-        stroke(0);
+        noStroke();
         fill(this.btnColor);
         if (this.image) {
             image(this.image, xPos, yPos, this.width, this.height);
@@ -46,22 +46,22 @@ class Button {
             //Back to default (12);
             textSize(12);
             //Back to default (LEFT,TOP);
-            textAlign(LEFT,TOP);
+            textAlign(LEFT, TOP);
         }
 
 
     }
-    
-    dragButton(){
-        this.draw(mouseX,mouseY);
+
+    dragButton() {
+        this.draw(mouseX, mouseY);
     }
 
-    setWideScreenPosition(x,y){
+    setWideScreenPosition(x, y) {
         this.wideX = x;
         this.wideY = y;
     }
-    
-    mouseInElement(){
+
+    mouseInElement() {
         if ((mouseX >= this.x) && (mouseX <= (this.x + this.width)) &&
             ((mouseY >= this.y) && (mouseY <= (this.y + this.height)))
         ) {

@@ -60,6 +60,34 @@ class GameFactory{
         return t;
     }
 
+    static createScroller(parameter){
+        var s = new Scroller();
+
+        s.scaleX = parameter.x;
+        s.scaleY = parameter.y;
+
+        s.scaleWidth = 0.3;
+        s.scaleHeight = 10;
+        s.scaleHeightBar = 1;
+
+        s.width = parameter.width * tileSize;
+        s.height = parameter.height * tileSize
+
+        s.wideX = parameter.wideX;
+        s.wideY = parameter.wideY;
+        s.yPos = parameter.wideY * tileSize;
+
+        if(isWideScreen && s.wideX && s.wideY){
+            s.x = s.scaleX * tileSize;
+            s.y = s.scaleY * tileSize;
+        }else{
+            s.x = s.wideX * tileSize;
+            s.y = s.wideY * tileSize;
+        }
+
+        return s;
+    }
+
     static createCommandList(parameter){
         var l = new CommandList();
 
@@ -82,10 +110,12 @@ class GameFactory{
 
         l.width = l.scaleWidth*tileSize;
         l.height = l.scaleHeight*tileSize;
+
+        l.fillerKlein = GuiFactory.createButton({x: 2, y: 15, wideX: 16, wideY: 4.9, width: 3, height: 1, btnColor: 150});
+        l.fillerGross = GuiFactory.createButton({x: 2, y: 15, wideX: 16, wideY: 4.9, width: 3, height: 2, btnColor: 150});
         
         l.entries = [];
 
         return l;
     }
-    
 }

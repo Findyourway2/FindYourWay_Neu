@@ -4,57 +4,56 @@
 "use strict";
 
 class InputButton {
-    //TODO input ermöglichen!
 
     constructor() {
         //Bleibt leer!
     }
 
-    draw(mousePosX, mousePosY) {
-
+    draw() {
         //Adjust position and size
-        if(isWideScreen && this.wideX && this.wideY){
-            this.x = this.wideX * tileSize;
-            this.y = this.wideY * tileSize;
-        }else{
-            this.x = this.scaleX * tileSize;
-            this.y = this.scaleY * tileSize;
-        }
-
-        this.width = this.scaleWidth * tileSize;
-        this.height = this.scaleHeight * tileSize;
-
-        var xPos = this.x;
-        var yPos = this.y;
-
-        if(mousePosX && mousePosY){
-            //Mouse is dragged, draw button at mouse position
-            xPos = mousePosX - (this.width /2);
-            yPos = mousePosY - (this.height /2);
-        }
-
-        stroke(0);
-        fill(this.btnColor);
-        if (this.image) {
-            image(this.image, xPos, yPos, this.width, this.height);
+        if (isWideScreen && this.wideX && this.wideY) {
+            this.x = this.wideX;
+            this.y = this.wideY;
         } else {
-            rect(xPos, yPos, this.width, this.height, 10);
-            textAlign(CENTER, CENTER);
-            textSize(this.height / 3);
-            fill(0);
-            noStroke();
-            text(this.text, xPos, yPos, this.width, this.height);
-            //Back to default (12);
-            textSize(12);
-            //Back to default (LEFT,TOP);
-            textAlign(LEFT,TOP);
+            this.x = this.scaleX;
+            this.y = this.scaleY;
         }
 
+        this.width = this.scaleWidth;
+        this.height = this.scaleHeight;
 
-    }
-
-    dragButton(){
-        this.draw(mouseX,mouseY);
+        if (this.stroke != undefined){
+            stroke(this.stroke);
+        }else{
+            noStroke();
+        }
+        if(this.btnColor != undefined){
+            fill(this.btnColor);
+        }else {
+            fill(150);
+        }
+        if (this.winkel != undefined) {
+            rect(this.x, this.y, this.width, this.height, this.winkel);
+        }else{
+            rect(this.x, this.y, this.width, this.height);
+        }
+        textAlign(this.textAlignX, this.textAlignY);
+        if (this.textSize != undefined){
+            textSize(this.textSize);
+        }else {
+            textSize(this.height / 3);
+        }
+        if (this.textCol != undefined) {
+            fill(this.textCol);
+        }else{
+            fill(0);
+        }
+        noStroke();
+        text(this.text, this.textPosX, this.textPosY, this.textWidth, this.textHeight);
+        //Back to default (12);
+        textSize(12);
+        //Back to default (LEFT,TOP);
+        textAlign(LEFT, TOP);
     }
 
     setWideScreenPosition(x,y){
